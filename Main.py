@@ -16,4 +16,4 @@ inst_menu = Menu()
 
 #Llamado al metodo menu
 
-
+inst_menu.menu()
