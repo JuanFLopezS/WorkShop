@@ -7,5 +7,13 @@ Language: Python 3.0
 #Importaciones de librerias
 
 from colorama import *
+from Menu import Menu
 init()
+
+#Creacion del objeto menu
+
+inst_menu = Menu()
+
+#Llamado al metodo menu
+
 

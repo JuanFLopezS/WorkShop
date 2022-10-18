@@ -53,7 +53,7 @@ class Menu:
             print('3. Consultar valor contenido en un nodo')
             print('4. Modificar valor de un nodo')
             print('5. Invertir toda la lista')
-            print('6. Validacion especial')
+            print('6. Revertir la lista, pero los valores de los nodos se convierten en la raiz cuadrada de su valor original')
             print(Fore.RESET)
 
             #Opciones del menu
@@ -69,10 +69,13 @@ class Menu:
                 
                 if(self.option == 1):
                     inst_SLL.append_node(int(input('Ingrese el valor del nodo: ')))
+                    inst_SLL.validate()
                 elif(self.option == 2):
                     inst_SLL.append_node(int(input('Ingrese el valor del nodo: ')))
+                    inst_SLL.validate()
                 elif(self.option == 3):
                     inst_SLL.insert_node(int(input('Ingrese la posicion donde desea insertar el nodo: ')), int(input('Ingrese el valor del nodo: ')))
+                    inst_SLL.validate()
                     print(Fore.RESET)
 
                 #Opciones para eliminar nodo
@@ -130,7 +133,7 @@ class Menu:
             print('3. Consultar valor contenido en un nodo')
             print('4. Modificar valor de un nodo')
             print('5. Invertir toda la lista')
-            print('6. Validacion especial')
+            print('6. Validaciones especiales')
             print(Fore.RESET)
 
             #Opciones del menu
@@ -140,16 +143,22 @@ class Menu:
                 print(Fore.RED + '1. Añadir nodo al principio')
                 print('2. Añadir nodo al final')
                 print('3. Añadir nodo en una posicion especifica')
+                print('4. Volver a menu principal')
 
                 #Opciones para añadir nodo
 
                 self.option = int(input('Seleccione una opcion: '))
                 if(self.option == 1):
                     inst_DLL.push_head_node(int(input('Ingrese el valor del nodo: ')))
+                    inst_DLL.validate()
                 elif(self.option == 2):
                     inst_DLL.push_tail_node(int(input('Ingrese el valor del nodo: ')))
+                    inst_DLL.validate()
                 elif(self.option == 3):
                     inst_DLL.insert_node(int(input('Ingrese la posicion donde desea insertar el nodo: ')), int(input('Ingrese el valor del nodo: ')))
+                    inst_DLL.validate()
+                elif(self.option == 4):
+                    self.Menu()
                 print(Fore.RESET)
 
                 #Opciones para eliminar nodo
@@ -158,6 +167,51 @@ class Menu:
                 print(Fore.RED + '1. Eliminar nodo al principio')
                 print('2. Eliminar nodo al final')
                 print('3. Eliminar nodo en una posicion especifica')
+                print('4. Volver a menu principal')
                 self.option = int(input('Seleccione una opcion: '))
                 if(self.option == 1):
-                    inst_DLL.
+                    inst_DLL.shift_head_node()
+                elif(self.option == 2):
+                    inst_DLL.pop_node()
+                elif(self.option == 3):
+                    inst_DLL.shift_search_node(int(input('Ingrese la posicion del nodo que desea eliminar: ')))
+                elif(self.option == 4):
+                    self.Menu()
+                print(Fore.RESET)
+            
+                #Opcion para consultar el nodo
+
+            elif(self.option == 3):
+                print(Fore.RED)
+                inst_DLL.get_node(int(input('Ingrese la posicion del nodo que desea consultar: ')))
+                print(Fore.RESET)
+
+                #Opcion para modificar el nodo
+
+            elif(self.option == 4):
+                print(Fore.RED)
+                inst_DLL.update(int(input('Ingrese la posicion del nodo que desea modificar: ')), int(input('Ingrese el nuevo valor del nodo: ')))
+                print(Fore.RESET)
+
+                #Opcion para invertir la lista
+
+            elif(self.option == 5):
+                print(Fore.RED)
+                inst_DLL.reverse_nodes()
+                print(inst_DLL)
+                print(Fore.RESET)
+
+                #Opciones especiales
+
+            elif(self.option == 6):
+                print('1. Actualizar un nodo de la lista, pero el valor del nodo debe ser el cuadrado del valor del nodo anterior')
+                print('2. Revertir la lista, pero los valores de los nodos se convierten en la raiz cuadrada de su valor original')
+                print('3. Volver a menu principal')
+                self.option = int(input('Seleccione una opcion: '))
+
+                if(self.option == 1):
+                    inst_DLL.update_node()
+                elif(self.option == 2):
+                    inst_DLL.reverse_nodes_sqrt()
+                elif(self.option == 3):
+                    self.Menu()

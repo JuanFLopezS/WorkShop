@@ -4,6 +4,9 @@ Date: 14/10/2022
 Language: Python 3.0
 '''
 
+import math
+
+
 class DoubleLinkedList: 
 
     #* Clase Nodo
@@ -168,3 +171,60 @@ class DoubleLinkedList:
                 current_node2 = current_node2.previous
 
             self.head = current_node1
+
+        #Consultar el valor de un nodo en una posicion especifica
+    def get_node(self, index):
+        #Condicional para saber si la lista esta vacia
+        if self.length == 0:
+            print('Lista vacía')
+        #Si la lista no esta vacia se busca el nodo por valor
+        else:
+            current_node = self.head
+            #*Recorremos la lista
+            for i in range(index):
+                current_node = current_node.next
+            return current_node.value
+
+        #Metodo para modificar el valor de un nodo en una posicion especifica
+    def update(self, index, value):
+        #Condicional para saber si la lista esta vacia
+        if self.length == 0:
+            print('Lista vacía')
+        #Si la lista no esta vacia se busca el nodo por valor
+        else:
+            current_node = self.head
+            #*Recorremos la lista
+            for i in range(index):
+                current_node = current_node.next
+            current_node.value = value
+
+        #Valida que no hayan numeros repetidos en los nodos
+
+    def validate(self):
+        # Valida que no haya numeros repetidos en la linkedlist
+        current_node = self.head
+        while current_node != None:
+            if current_node.value == current_node.linked_next_node.value:
+                return False
+            current_node = current_node.linked_next_node
+        return True
+
+        #Actualizar un nodo por posicion y valor siendo el valor el cuadrado del valor del nodo anterior
+
+    def update_node(self, index, value):
+        if self.length == 0:
+            print('Lista vacía')
+        else:
+            current_node = self.head
+            for i in range(index):
+                current_node = current_node.next
+            current_node.value = current_node.previous.value**2
+
+        #Revertir la lista, pero los valores deben ser la raiz cuadrada de los valores originales
+
+    def reverse_sqrt(self):
+        current_node = self.head
+        while current_node != None:
+            current_node.value = math.sqrt(current_node.value)
+            current_node = current_node.linked_next_node
+        return self.head

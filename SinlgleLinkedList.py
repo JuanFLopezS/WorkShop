@@ -4,6 +4,9 @@ Date: 14/10/2022
 Language: Python 3.0
 '''
 
+import math
+
+
 class SingleLinkedList:
     ''' Creamos una clase anidada en SingleLinkedList '''
     class Node:
@@ -172,7 +175,7 @@ class SingleLinkedList:
         else:
             return None
 
-
+    #Reverse la linkedlist en su lugar
 
     def reverse(self):
         # Revierte la linkedlist
@@ -187,4 +190,24 @@ class SingleLinkedList:
             reverse_nodes = current_node
             current_node = linked_next_node
         self.head = reverse_nodes
+        return self.head
+
+    #Valida que no hayan numeros repetidos en los nodos
+
+    def validate(self):
+        # Valida que no haya numeros repetidos en la linkedlist
+        current_node = self.head
+        while current_node != None:
+            if current_node.value == current_node.linked_next_node.value:
+                return False
+            current_node = current_node.linked_next_node
+        return True
+
+    #Revertir la lista, pero los valores deben ser la raiz cuadrada de los valores originales
+
+    def reverse_sqrt(self):
+        current_node = self.head
+        while current_node != None:
+            current_node.value = math.sqrt(current_node.value)
+            current_node = current_node.linked_next_node
         return self.head
